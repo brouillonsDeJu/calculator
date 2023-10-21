@@ -27,16 +27,20 @@ const v0 = { value: 0 };
 const virgule = { value: '.' }
 
 
-const nombres1 = [];
-const nombres2 = [];
+let nombres1 = [];
+let nombres2 = [];
 let operationCourante = null;
+
+function expo(x, f) {
+  return Number.parseFloat(x).toExponential(f);
+}
 
 function afficher(resultat){
     const fenetre = document.getElementById("fenetre"); // c'est un alias
     let chiffres
 
     if (resultat) {
-        chiffres = resultat
+        chiffres = resultat > 1000000000 ? expo(resultat, 5) : resultat;
     } else {
         if (operationCourante) {
             chiffres = nombres2.join('')
@@ -49,12 +53,19 @@ function afficher(resultat){
 }
 
 
+
+
 function val(chiffre){
     if (operationCourante) {
-        nombres2.push(chiffre);
+        if (nombres2.length <= 14) {
+            nombres2.push(chiffre);
+        }
     } else {
-        nombres1.push(chiffre);
+        if (nombres1.length <= 14) {
+            nombres1.push(chiffre);
+        }
     }
+
     afficher();
 }
 
@@ -63,41 +74,46 @@ function calculer() {
     const termes2 = parseFloat(nombres2.join(''), 10);
 
     switch(operationCourante) {
-
-
         case '+':
             afficher(termes1 + termes2)
-
             break;
-        
-
         case '-':    
             afficher(termes1 - termes2)
             break;
         case 'x':   
-        afficher(termes1 * termes2)
+            afficher(termes1 * termes2)
             break;
         case '/':   
-        afficher(termes1 / termes2);
+            afficher(termes1 / termes2);
             break;
         default:
-            // erreur
+
 
         operationCourante= null
 
     }
 }
 
-function suppr() {
-
+function effacer() {
+    nombres1 = []
+    nombres2 = []
+    operationCourante = null;
 }
 
 function operation(value) {
-    console.log(value)
     operationCourante = value;
 }
+
+document.addEventListener(
+    "keydown",
+    (event) => {
+      const keyName = event.key;
+      const keyValue = parseInt(keyName, 10)
+
+      if (!isNaN(keyValue)) {
+        val(keyValue)
+      }
+    },
+    false,
+  );
  
-
-
-// se recharge au click instead energie solaire
-// marque comme CASIO 

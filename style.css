@@ -1,49 +1,86 @@
 body, html {
     height: 100%;
+
+    font-family: 'Orbitron', sans-serif;
+
 }
 
 body {
     background-image: url("./halloween.jpg");
     display: grid;
     place-items: center;
+
 }
 
+/* Ensemble */
+
 .calculatrice {
-    width: 300px;
+    width: 22rem;
     background-color: orange;
     padding: 40px 10px;
     border-radius: 10px;
-    box-shadow: -3px -3px 7px black, 3px 3px 5px rgb(235, 213, 242);
+    box-shadow: -3px -3px 7px white, 3px 3px 5px rgb(235, 213, 242);
+    font-family: 'Orbitron', sans-serif;
+
 }
 
-.form {}
+cite h2 {
+    padding-left: 1rem;
 
-.egal {}
+}
 
 .resultat input {
-    width: 80%;
-    height: 80%;
+
+    padding: 0 1rem;
+    height: 4rem;
+    width: 100%;
     background-color: transparent;
-    padding: 1rem;
     color: black;
     font-size: 20px;
     text-align: right;
     border: none;
     outline: none;
     font-weight: 500;
-    box-shadow: -3px -3px 7px black, 3px 3px 5px rgb(57, 25, 56);
-}
-
-#operateurs {
-    position: relative;
-    margin-top: 0%;
-    margin-bottom: 0%;
-    margin-left: 1rem;
+    box-shadow: inset 1px -2px 5px black, 1px 3px 12px rgb(151 87 149);
+    font-family: 'Orbitron', sans-serif;
 
 }
 
-#button {
-    width: 63%;
+/* Boutons */
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    padding: 7px 18px;
+}
+
+.buttons {
+    padding: 30px 0 0 0;
+    text-align: center;
+}
+
+input[type="button"] {
+    width: 30%;
+    height: 3rem;
+    margin: 4px;
+    font-size: 23px;
+    background: rgb(189, 81, 229);
+    color: black;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    box-shadow: -1px -1px 5px black, 1px 1px 3px rgb(151 87 149);
+    font-family: 'Orbitron', sans-serif;
+
+}
+
+input[type="button"]:active {
+    box-shadow: inset -3px -3px 7px black, inset 3px 3px 5px rgb(135, 73, 7);
+}
+
+.reset input[type="reset"] {
+    width: 100%;
+    font-size: 18px;
     height: 30%;
     margin: 4px;
     font-size: 23px;
@@ -52,38 +89,9 @@ body {
     border: none;
     outline: none;
     cursor: pointer;
-    box-shadow: -3px -3px 7px black, 3px 3px 5px rgb(57, 25, 56);
-}
+    box-shadow: -1px -1px 5px black, 1px 1px 3px rgb(151 87 149);
+    font-family: 'Orbitron', sans-serif;
 
-.row {}
-
-.buttons {
-    padding: 30px 0 0 0;
-    text-align: center;
-
-}
-
-input[type="button"] {
-    width: 56px;
-    height: 56px;
-    margin: 4px;
-    font-size: 23px;
-    background: rgb(189, 81, 229);
-    color: black;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    box-shadow: -3px -3px 7px black, 3px 3px 5px rgb(57, 25, 56);
-}
-
-input[type="button"]:active {
-    box-shadow: inset -3px -3px 7px black, inset 3px 3px 5px rgb(135, 73, 7);
-}
-
-.reset {
-    width: 63% !important;
-    height: 50% !important;
-    font-size: 18px;
 }
 
 .info {
@@ -95,14 +103,14 @@ input[type="button"]:active {
     font-weight: 400px;
 }
 
+/* Footer */
+
 #signature {
     color: yellow;
 }
 
 #fenetre {
-    position: relative;
     margin-bottom: 10%;
-    margin-left: 1rem;
 }
 
 /* @keyframes monAnimation {
@@ -114,3 +122,9 @@ input[type="button"]:active {
         Opacity: 0;
     }
 } */
+
+@media screen AND (max-width: 500px) {
+    .calculatrice {
+        width: 90%;
+    }
+}

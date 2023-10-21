@@ -7,7 +7,11 @@
     <title>Calculatrice Halloween</title>
     <link rel="stylesheet" href="/style.css">
     <script defer src="/calcultor.js"></script>
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&family=Orbitron&family=Rock+Salt&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
@@ -18,14 +22,16 @@
         <p class="info"></p>
         <!-- pour indiquer à l'utilisateur qui tape résultat de d'abord entrer son calcul -->
         <form name="form">
-            <div class="resultat">
+            <div class="row resultat">
                 <input type="text" id="fenetre" name="fenetre" disabled>
             </div>
             <div id="operateurs">
-                <input type="button" value="+" id="addition" onclick="operation('+')">
-                <input type="button" value="-" id="soustraction" onclick="operation('-')">
-                <input type="button" value="x" id="multiplication" onclick="operation('x')">
-                <input type="button" value="&#247" id="division" onclick="operation('/')">
+                <div class="row">
+                    <input type="button" value="+" id="addition" onclick="operation('+')">
+                    <input type="button" value="-" id="soustraction" onclick="operation('-')">
+                    <input type="button" value="x" id="multiplication" onclick="operation('x')">
+                    <input type="button" value="&#247" id="division" onclick="operation('/')">
+                </div>
             </div>
 
             <div class="buttons">
@@ -59,11 +65,11 @@
                 <div class="row">
                     <input type="button" value="0" name="v0 " onclick="val(v0.value)">
                     <input type="button" value="&#44" name="virgule " onclick="val(virgule.value)">
-                    <input class="egal" type="button" value="egal" name="egal" onclick="calculer()">
+                    <input class="egal" type="button" value="=" name="egal" onclick="calculer()">
                 </div>
-                <div class="row">
+                <div class="row reset">
                     <!-- <input class="reset" type="button" value="Al" name="reset" onclick="suppr()"> -->
-                    <input id="button" type="reset" value="All Clear" />
+                    <input id="button" type="reset" value="All Clear" onclick="effacer()" />
                 </div>
             </div>
 
