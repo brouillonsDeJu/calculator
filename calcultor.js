@@ -7,10 +7,6 @@
   
 //   console.log(computeResult(a)); // Should display 10
 
-// empecher l'utilisateur d'utiliser autre chose que des chiffres
-// faire fonctionner les opérateurs
-// faire fonctionner le résultat et son affichage
-// faire fonctionner la touche supprimer
 
 //définir tous les v de l'html
 const v1 = { value: 1 };
@@ -30,29 +26,30 @@ const virgule = { value: '.' }
 let nombres1 = [];
 let nombres2 = [];
 let operationCourante = null;
+let resultat
 
 function expo(x, f) {
   return Number.parseFloat(x).toExponential(f);
 }
 
-function afficher(resultat){
+function afficherResultat(){
+    const fenetre = document.getElementById("fenetre"); // c'est un alias
+
+    fenetre.value = resultat > 1000000000 ? expo(resultat, 5) : resultat;
+
+}
+function afficher(){
     const fenetre = document.getElementById("fenetre"); // c'est un alias
     let chiffres
-
-    if (resultat) {
-        chiffres = resultat > 1000000000 ? expo(resultat, 5) : resultat;
+  
+    if (operationCourante) {
+        chiffres = nombres2.join('')
     } else {
-        if (operationCourante) {
-            chiffres = nombres2.join('')
-        } else {
-            chiffres = nombres1.join('')
-        }
+        chiffres = nombres1.join('')
     }
 
     fenetre.value = chiffres
 }
-
-
 
 
 function val(chiffre){
@@ -72,38 +69,53 @@ function val(chiffre){
 function calculer() {
     const termes1 = parseFloat(nombres1.join(''), 10);
     const termes2 = parseFloat(nombres2.join(''), 10);
+    nombres1 = []
+    nombres2 = []
+
+    const op = (operation) => {
+        if (resultat) {
+            resultat = operation(resultat, termes2)
+        } else {
+            resultat = operation(termes1, termes2)
+        }
+    }
 
     switch(operationCourante) {
         case '+':
-            afficher(termes1 + termes2)
+            op((a,b) => a + b)
             break;
         case '-':    
-            afficher(termes1 - termes2)
+            op((a,b) => a - b)
             break;
         case 'x':   
-            afficher(termes1 * termes2)
+            op((a,b) => a * b)
             break;
         case '/':   
-            afficher(termes1 / termes2);
+            op((a,b) => a / b)
             break;
         default:
-
-
+ 
+        }
+        afficherResultat()
         operationCourante= null
-
-    }
 }
 
 function effacer() {
     nombres1 = []
     nombres2 = []
     operationCourante = null;
+    resultat = undefined
 }
 
 function operation(value) {
+    if (operationCourante && nombres2.length) {
+        calculer()
+    }
+
     operationCourante = value;
 }
 
+// activer le support des touches clavier
 document.addEventListener(
     "keydown",
     (event) => {

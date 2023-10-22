@@ -94,14 +94,14 @@ input[type="button"]:active {
 
 }
 
-.info {
+/* .info {
     color: rgb(253, 245, 245);
     text-align: center;
     text-transform: uppercase;
     font-size: 9px;
     margin-bottom: 1rem;
     font-weight: 400px;
-}
+} */
 
 /* Footer */
 
@@ -112,16 +112,6 @@ input[type="button"]:active {
 #fenetre {
     margin-bottom: 10%;
 }
-
-/* @keyframes monAnimation {
-    From {
-        Opacity: 1;
-    }
-
-    To {
-        Opacity: 0;
-    }
-} */
 
 @media screen AND (max-width: 500px) {
     .calculatrice {
