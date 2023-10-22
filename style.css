@@ -45,6 +45,11 @@ cite h2 {
     border: solid 0.5px gray;
 }
 
+.resultat input:disabled {
+    color: black;
+    opacity: 1;
+}
+
 /* Boutons */
 
 .row {
